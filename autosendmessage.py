@@ -50,7 +50,7 @@ message_content = {
     'usesig': '1',
     'subject':'' 
     }
-for i in range(100):
+while True:
     r = sss.post(message_post_url, data = message_content)
     print r.content
-    time.sleep(600)
+    time.sleep(1200)
