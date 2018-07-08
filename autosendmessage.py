@@ -4,6 +4,7 @@ import requests as req
 from bs4 import BeautifulSoup as bs
 import re
 import time
+import random
 
 
 ######登录并获得session
@@ -20,8 +21,8 @@ my_headers = {
 }
 
 log_info = {
-    'username':'nzweb',
-    'password':'Utler321',
+    'username':'xinyu168168',
+    'password':'cynebrlcl1984',
     'verifycode':'1111',
     'backurl':'http://bbs.skykiwi.com/forum.php',
     'isRemember':'0'
@@ -34,8 +35,8 @@ r = sss.post(login_url, data = log_info)
 
 #print r.content
 ###########进入帖子界面，获得formhash
-message_url = 'http://bbs.skykiwi.com/forum.php?mod=viewthread&tid=3616742'
-message_post_url = 'http://bbs.skykiwi.com/forum.php?mod=post&action=reply&fid=205&tid=3616742&extra=&replysubmit=yes&infloat=yes&handlekey=fastpost&inajax=1'
+message_url = 'http://bbs.skykiwi.com/forum.php?mod=viewthread&tid=3626072'
+message_post_url = 'http://bbs.skykiwi.com/forum.php?mod=post&action=reply&fid=18&tid=3626072&extra=&replysubmit=yes&infloat=yes&handlekey=fastpost&inajax=1'
 r = sss.get(message_url)
 #print r.content
 soup = bs(r.text,'html.parser')
@@ -45,12 +46,14 @@ formhash = formhash_tag.attrs['value']
 #print formhash
 
 message_content = {
-    'message': '【特价中】手机电脑系统安装，硬件维护，系统维护，装系统，优化系统',
+    'message': 'dddddddddddddddd',
     'formhash': formhash,
     'usesig': '1',
     'subject':'' 
     }
 while True:
+    random_time = random.randint(600, 1200)
     r = sss.post(message_post_url, data = message_content)
-    print r.content
-    time.sleep(1200)
+    print r
+    print "sleep for " + str(random_time) + " seconds"
+    time.sleep(random_time)
